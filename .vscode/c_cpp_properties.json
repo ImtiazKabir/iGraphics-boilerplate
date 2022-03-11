@@ -1,0 +1,9 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": ["${workspaceFolder}\\include", "${workspaceFolder}\\GL\\include"]
+    }
+  ],
+  "version": 4
+}
