@@ -25,6 +25,17 @@ void mouseMoveHandlerFF(int mx, int my);
 void mouseHandlerFF(int button, int state, int x, int y);
 void mousePassiveMoveHandlerFF(int mx, int my);
 
+void __stdcall iA0(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA1(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA2(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA3(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA4(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA5(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA6(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA7(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA8(HWND h, UINT u, UINT_PTR up, DWORD d);
+void __stdcall iA9(HWND h, UINT u, UINT_PTR up, DWORD d);
+
 void __stdcall iA0(HWND h, UINT u, UINT_PTR up, DWORD d){if(!iAnimPause[0])iAnimFunction[0]();}
 void __stdcall iA1(HWND h, UINT u, UINT_PTR up, DWORD d){if(!iAnimPause[1])iAnimFunction[1]();}
 void __stdcall iA2(HWND h, UINT u, UINT_PTR up, DWORD d){if(!iAnimPause[2])iAnimFunction[2]();}
@@ -131,9 +142,9 @@ void iShowBMP(int x, int y, char const *filename) {
 
 
 
-void iGetPixelColor (int cursorX, int cursorY, int rgb[]) {
+void iGetPixelColor (int x, int y, int rgb[]) {
   GLubyte pixel[3];
-  glReadPixels(cursorX, cursorY,1,1,GL_RGB,GL_UNSIGNED_BYTE,(void *)pixel);
+  glReadPixels(x,y,1,1,GL_RGB,GL_UNSIGNED_BYTE,(void *)pixel);
 
   rgb[0] = pixel[0];
   rgb[1] = pixel[1];
@@ -142,7 +153,7 @@ void iGetPixelColor (int cursorX, int cursorY, int rgb[]) {
   /* printf("%d %d %d\n",pixel[0],pixel[1],pixel[2]); */
 }
 
-void iText(double x, double y, char const *str, void* font) {
+void iText(double x, double y, char const *str, void *font) {
   int i;
 
   if (!font) {

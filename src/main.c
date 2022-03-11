@@ -14,8 +14,6 @@ void update(void);
 
 void iDraw(void) {
 	iClear();
-
-
 	/*
 		This function runs forever. Do NOT update variables inside iDraw. Use iDraw to DRAW stuff only
 	*/
@@ -28,7 +26,6 @@ void update(void) {
 }
 
 void iMouseMove(int state) {
-	printf("%d %d\n", iMouseX(), iMouseY());
 }
 
 void iMouse(int button, int state, int mx, int my) {}
