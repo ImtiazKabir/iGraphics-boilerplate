@@ -34,7 +34,7 @@ The rgb values range from `0` to `255` in both cases. The set color method sets 
 The get color method expects the position of the pixel to extract color from as `x`, `y` coordinates. It takes an array to write the rgb value on as `int rgb[]`. The array should have a length of 3. The get color method can be used like this -
 ```c
 int rgb[3], red, green, blue;
-iGetPixelColor(50, 10, rgb[]);
+iGetPixelColor(50, 10, rgb);
 red = rgb[0];
 green = rgb[1];
 blue = rgb[2];
@@ -107,4 +107,5 @@ Timers are used to call a function periodically. `iSetTimer` takes 2 parameters 
 - The pointer to the function to call after each period. The pointer to the function can be obtained by using simply the name of the function
 
 **One can have at best 10 timers**
+
 `iPauseTimer` and `iResumeTimer` takes the index of the timer to operate on
