@@ -36,7 +36,8 @@ $(ODIR)/%.o: $(SDIR)/%.c
 .PHONY:Debug
 Debug: $(OBJ)
 	$(CC) $^ $(CFLAGS) -o $(BIN) -lgdi32 $(LDLIBS) $(LIBS)
-	copy $(ASSETS_DIR)\* $(BDIR)\$(ASSETS_DIR)\ /Y
+	dir /b "$(ASSETS_DIR)" | findstr "^" >nul && (copy $(ASSETS_DIR)\* $(BDIR)\$(ASSETS_DIR)\ /Y) || (echo no assets yet)
+	
 
 .PHONY: run
 run:

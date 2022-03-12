@@ -3,7 +3,7 @@
 
 
 #define FPS 60
-/* 
+/*
 	Please try to avoid using the following 2 macros whenever you can.
 	Usage of iWidth() and iHeight() is advised. Though there can be cases where you need these macros
 */
