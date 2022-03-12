@@ -142,6 +142,8 @@ void iEllipse(double x, double y, double a, double b, int slices);
 void iFilledEllipse(double x, double y, double a, double b, int slices);
 ```
 
+The parameter `slices` is the number of slices to draw an ellipse or a circle. The more the `slices` the smoother the shape, but the slower the runtime! If you want to use the default behaviour of iGraphics then pass `-1` in place of `slices`
+
 ### Clear the screen
 ```c
 void iClear(void);
