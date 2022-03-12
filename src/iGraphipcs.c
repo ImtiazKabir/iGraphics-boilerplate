@@ -15,6 +15,7 @@ void (*iAnimFunction[10])(void)={0};
 int iAnimCount=0;
 int iAnimDelays[10];
 int iAnimPause[10];
+int win;
 
 void resize(int width, int height);
 void displayFF(void);
@@ -466,15 +467,15 @@ void iInitialize(int width, int height, char const * title) {
   iScreenHeight = height;
   iScreenWidth = width;
 
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_ALPHA) ;
-  glutInitWindowSize(width , height ) ;
-  glutInitWindowPosition( 10 , 10 ) ;
-  glutCreateWindow(title) ;
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_ALPHA);
+  glutInitWindowSize(width , height );
+  glutInitWindowPosition( 10 , 10 );
+  win = glutCreateWindow(title);
   glutReshapeFunc(resize);
-  glClearColor( 0.0 , 0.0 , 0.0 , 0.0 ) ;
-  glMatrixMode( GL_PROJECTION) ;
+  glClearColor( 0.0 , 0.0 , 0.0 , 0.0 );
+  glMatrixMode( GL_PROJECTION);
   glLoadIdentity() ;
-  glOrtho(0.0 , width , 0.0 , height , -1.0 , 1.0) ;
+  glOrtho(0.0 , width , 0.0 , height , -1.0 , 1.0);
   /* glOrtho(-100.0 , 100.0 , -100.0 , 100.0 , -1.0 , 1.0) ; */
   /* SetTimer(0, 0, 10, timer_proc); */
 
@@ -516,4 +517,3 @@ int iMouseX(void) {
 int iMouseY(void) {
   return mouseY;
 }
-

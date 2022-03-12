@@ -38,4 +38,3 @@ void iSetColor(double r, double g, double b);
 void iDelay(int sec);
 void iClear(void);
 void iInitialize(int width, int height, char const *title);
-
