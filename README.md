@@ -1,6 +1,84 @@
 # IGRAPHICS BOILERPLATE
 A sample igraphics boilerplate
 
+
+## Usage
+First clone this repository or simply download it as a zip and then extract it. Currently we support 2 main editors/ide. But you can use any editor and then build the project from terminal. First of all, make sure you have `mingw32` installed in `C:\MinGW\MinGW` directory (make sure `C:\MinGW\MinGW\bin` exists)
+
+You will find a `setpath.bat` file in the project directory. Run that as adminstrator. This is a one time process. You do **NOT** need to run this file every single time.
+
+
+## For Codeblocks users
+Simply open the `template.cbp` file with Codeblocks. Use the buttons from the toolbar to build and run the project.
+
+## For VS Code users
+VS code users can open the entire project directory with VS code. To build the project, press `Ctrl+Shift+B` and to run it, press `Ctrl+F5`
+
+## For others
+Other editor users / terminal lovers can build the project by running the following command from command prompt or powershell
+```
+mingw32-make.exe
+```
+and to run the project enter this command
+```
+mingw32-make.exe run
+```
+
+
+## File structure
+The main source codes are kept inside `src` folder. The entry point of this project is `src/main.c`
+
+If you want to create multiple files, then put your `.c` files in the `src` folder and put your header files(`.h`) in `include` folder. You do **NOT** need to put a relative path while including a library. For example if you want to include `include/kitty.h` from your `src/foo.c` then simply include it like this -
+```c
+#include "kitty.h"
+```
+Notice how the relative path from `src` to `include` is omitted.
+
+### Images/sound (assets)
+Assets are to be kept inside the `assets/` folder. (*Not to confuse with `bin/assets`*)
+Let's say you want to show `assets/kitty.bmp` from your `src/foo.c`. Use it like so - 
+```c
+iShowBMP(x, y, "assets/kitty.bmp");
+```
+Notice how you are having it to type in the full path for an asset.
+
+
+## Must declare functions and MACROS
+### The `main` function
+The `main` function has 2 key parts for the user to edit.
+1. The initialization for the global variables
+2. The cleanup code
+
+The first part is before `iSetTimer` is called. Here you initialize all the global variables.
+
+And the second part is after `iInitialize` is called. Here you should write your cleanup code. You are suggested to free the pointers allocated at the heap in this segment.
+
+### The `iDraw` function
+This is where you draw all your fancy stuff. This function is supposed to be used only for drawing. You **should not** update your variables here. That's where the `update` function comes in
+
+### The `update` function
+This function is called periodically. All your update-logic should be contained in this function.
+
+### The `iMouseMove` function
+This function is triggered every single time the mouse is moved. It takes a `state` parameter which can have 2 values - `IMOUSE_MOVED` or `IMOUSE_DRAGGED`. If the mouse is moved without dragging then `state = IMOUSE_MOVED`. Otherwise `state = IMOUSE_DRAGGED`
+
+### The `iKeyboard` and the `iSpecialKeyboard` function
+Both function is for listening to keyboard events.
+
+The `iSpecialKeyboard` function is triggerd when some special key (like function keys - `F1`, `F2` etc) are pressed.
+
+For other normal keypress events,  `iKeyboard` is triggered.
+
+Both function takes `unsigned char key` as a parameter. For `iKeyboard` it is just the character expression of the key (like `'a'`, `'b'` etc). But for `iSpecialKeyboard` the value of `char` is an enum defined in openGL library.
+
+### The `FPS` macro
+This controls the "frames per second" for the project. This does not affect the `iDraw` cycle. It just limits your `update` cycle to follow the `FPS` value
+
+### The `WIDTH` and `HEIGHT` macro
+These macros define the resolution of the screen. **You are advised to avoid using them whenever you can**. Use `iWidth()` and `iHeight()` if possible.
+
+These macros are for cases where `iWidth()` and `iHeight()` are not ready yet (specifically speaking, before `iInitialize` is called).
+
 ## Docs
 
 ### Initialize the window and thus start the draw loop

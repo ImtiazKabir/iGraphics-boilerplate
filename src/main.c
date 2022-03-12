@@ -25,8 +25,7 @@ void update(void) {
 	*/
 }
 
-void iMouseMove(int state) {
-}
+void iMouseMove(int state) {}
 
 void iMouse(int button, int state, int mx, int my) {}
 
