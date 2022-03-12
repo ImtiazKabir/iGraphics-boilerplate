@@ -36,7 +36,7 @@ $(ODIR)/%.o: $(SDIR)/%.c
 .PHONY:Debug
 Debug: $(OBJ)
 	$(CC) $^ $(CFLAGS) -o $(BIN) -lgdi32 $(LDLIBS) $(LIBS)
-	copy $(ASSETS_DIR)\* $(BDIR)\$(ASSETS_DIR)\
+	copy $(ASSETS_DIR)\* $(BDIR)\$(ASSETS_DIR)\ /Y
 
 .PHONY: run
 run:
